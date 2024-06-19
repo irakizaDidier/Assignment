@@ -147,14 +147,10 @@ console.log(filterByAge(people, 18));
 
 function compose(...fns) {
     return function (initialValue) {
-        return fns.reduceRight((acc, fn, index) => {
-            console.log(`Function ${fns.length - index}:`, fn.name || 'anonymous', '| Input:', acc);
-            const result = fn(acc);
-            console.log(`Function ${fns.length - index}:`, fn.name || 'anonymous', '| Output:', result);
-            return result;
-        }, initialValue);
+        return fns.reduceRight((acc, fn) => fn(acc), initialValue);
     };
 }
+
 
 // Example usage:
 
