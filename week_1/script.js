@@ -23,7 +23,7 @@ function isPalindrome(str) {
     const reversed = str.split('').reverse().join('');
     return str === reversed;
 }
-console.log(isPalindrome('1221'))
+console.log(isPalindrome('didier'))
 
 // d. wordCount(str)
 // Counts the number of words in a string.
@@ -105,7 +105,7 @@ const person2 = {
 const person3 = {
     firstName: "Claude",
     lastName: "Ishimwe",
-    age: 19
+    age: 16
 };
 
 function fullName(person) {
