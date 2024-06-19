@@ -1,6 +1,17 @@
+flatpickr("#dueDate", {
+    enableTime: true,
+    dateFormat: "Y-m-dTH:i",
+    altInput: true,
+    altFormat: "F j, Y h:i K",
+    time_24hr: true,
+    defaultDate: new Date().toISOString(),
+});
+
 let todoItems = [];
+let editIndex = -1;
 
 document.getElementById('addButton').addEventListener('click', addItem);
+document.getElementById('updateButton').addEventListener('click', updateItem);
 document.getElementById('sortAscButton').addEventListener('click', () => sortItems(true));
 document.getElementById('sortDescButton').addEventListener('click', () => sortItems(false));
 
@@ -26,10 +37,33 @@ function addItem() {
     clearInputFields();
 }
 
+function updateItem() {
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const dueDate = document.getElementById('dueDate').value;
+
+    if (title === '' || dueDate === '') {
+        alert('Title and Due Date are required!');
+        return;
+    }
+
+    todoItems[editIndex] = {
+        title,
+        description,
+        dueDate: new Date(dueDate),
+        completed: todoItems[editIndex].completed
+    };
+
+    displayItems();
+    clearInputFields();
+    toggleButtons(false);
+}
+
 function clearInputFields() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('dueDate').value = '';
+    editIndex = -1;
 }
 
 function displayItems() {
@@ -49,7 +83,8 @@ function displayItems() {
             </div>
             <div class="buttons">
                 <button onclick="toggleComplete(${index})">${item.completed ? 'Unmark' : 'Complete'}</button>
-                <button onclick="deleteItem(${index})">Delete</button>
+                <button class="edit-button" onclick="editItem(${index})">Edit</button>
+                <button class="delete-button" onclick="deleteItem(${index})">Delete</button>
             </div>
         `;
 
@@ -65,6 +100,20 @@ function toggleComplete(index) {
 function deleteItem(index) {
     todoItems.splice(index, 1);
     displayItems();
+}
+
+function editItem(index) {
+    const item = todoItems[index];
+    document.getElementById('title').value = item.title;
+    document.getElementById('description').value = item.description;
+    document.getElementById('dueDate').value = item.dueDate.toISOString().slice(0, 16);
+    editIndex = index;
+    toggleButtons(true);
+}
+
+function toggleButtons(editMode) {
+    document.getElementById('addButton').style.display = editMode ? 'none' : 'block';
+    document.getElementById('updateButton').style.display = editMode ? 'block' : 'none';
 }
 
 function sortItems(asc) {

@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>To-Do List</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     </head>
     <body>
         <h1>To-Do List</h1>
@@ -14,19 +16,24 @@
                     <input type="text" id="title" placeholder="Title">
                     <input type="text" id="description"
                         placeholder="Description">
-                    <input type="datetime-local" id="dueDate">
+                    <input type="text" id="dueDate"
+                        placeholder="Select Date and Time">
                     <button id="addButton">Add</button>
+                    <button id="updateButton"
+                        style="display: none;">Update</button>
                 </div>
             </div>
             <div class="todo-container">
-                <div>
-                    <button id="sortAscButton">Sort by Due Date (Asc)</button>
-                    <button id="sortDescButton">Sort by Due Date (Desc)</button>
+                <div class="buttons">
+                    <button id="sortAscButton" class="sort-button">Sort by Date
+                        (Asc)</button>
+                    <button id="sortDescButton" class="sort-button">Sort by Date
+                        (Desc)</button>
                 </div>
                 <div id="todoList"></div>
             </div>
-        </div>
 
-        <script src="app.js"></script>
-    </body>
-</html>
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script src="app.js"></script>
+        </body>
+    </html>
