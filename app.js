@@ -82,7 +82,7 @@ function displayItems() {
                 <p>${item.dueDate.toLocaleString()}</p>
             </div>
             <div class="buttons">
-                <button onclick="toggleComplete(${index})">${item.completed ? 'Unmark' : 'Finishe'}</button>
+                <button onclick="toggleComplete(${index})">${item.completed ? 'Unmark' : 'Finish'}</button>
                 <button class="edit-button" onclick="editItem(${index})">Edit</button>
                 <button class="delete-button" onclick="deleteItem(${index})">Delete</button>
             </div>
