@@ -54,3 +54,69 @@ Clock.prototype.get12HourTime = function () {
 
 console.log("Formatted Time: ", myClock.getFormattedTime());
 console.log("12-Hour Format Time: ", myClock.get12HourTime());
+
+// Challenge 4: Dynamic Display
+// Task: Create a function to display the clock on a webpage.
+
+function displayClock() {
+    let clockElement = document.getElementById("clock");
+    let clock = new Clock();
+    clockElement.innerHTML = clock.getFormattedTime();
+}
+
+setInterval(displayClock, 1000);
+
+// Challenge 5: Clock Customization
+// Add options to customize the clock.
+
+// function Clock(options) {
+//     let currentTime = new Date();
+//     this.hours = currentTime.getHours();
+//     this.minutes = currentTime.getMinutes();
+//     this.seconds = currentTime.getSeconds();
+//     this.format = options && options.format === 12 ? 12 : 24;
+//     this.timezoneOffset = options && options.timezoneOffset || 0;
+//     this.color = options && options.color || 'black';
+// }
+
+// Clock.prototype.getFormattedTime = function () {
+//     let hours = (this.hours + this.timezoneOffset) % this.format;
+//     hours = hours < 10 ? '0' + hours : hours;
+//     let minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
+//     let seconds = this.seconds < 10 ? '0' + this.seconds : this.seconds;
+//     return `${hours}:${minutes}:${seconds}`;
+// };
+
+// function displayClock(options) {
+//     let clockElement = document.getElementById("clock");
+//     let clock = new Clock(options);
+//     clockElement.style.color = clock.color;
+//     clockElement.innerHTML = clock.getFormattedTime();
+// }
+
+// setInterval(function () {
+//     displayClock({
+//         format: 12,
+//         timezoneOffset: -5,
+//         color: 'blue'
+//     });
+// }, 1000);
+
+// Challenge 6: Advanced Challenge (Optional)
+// Build an alarm clock feature that triggers an alert at a specified time.
+Clock.prototype.setAlarm = function (hour, minute, second, callback) {
+    let alarmTime = new Date();
+    alarmTime.setHours(hour);
+    alarmTime.setMinutes(minute);
+    alarmTime.setSeconds(second);
+
+    let currentTime = new Date();
+    let timeToAlarm = alarmTime.getTime() - currentTime.getTime();
+
+    if (timeToAlarm >= 0) {
+        setTimeout(callback, timeToAlarm);
+    }
+};
+myClock.setAlarm(12, 48, 0, function () {
+    alert("Go to work Please!!");
+});
