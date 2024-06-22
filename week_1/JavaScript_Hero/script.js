@@ -30,3 +30,19 @@ superhero.revealIdentity = function () {
 
 superhero.usePower("Invisibility");
 superhero.revealIdentity();
+
+// 3. Object Constructors
+// Task: Create a Superhero constructor function to streamline the creation of multiple superheroes.
+
+function Superhero(name, secretIdentity, powers, weakness) {
+    this.name = name;
+    this.secretIdentity = secretIdentity;
+    this.powers = powers;
+    this.weakness = weakness;
+}
+
+let hero1 = new Superhero("Shadow Avenger", "Irakiza Didier", ["Invisibility", "Super Strength", "Flight"], "Kryptonite");
+let hero2 = new Superhero("Blaze", "Habimana Strong", ["Fire Control", "Heat Resistance"], "Water");
+
+console.log(hero1);
+console.log(hero2);
