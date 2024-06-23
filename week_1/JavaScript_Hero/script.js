@@ -42,7 +42,7 @@ function Superhero(name, secretIdentity, powers, weakness) {
 }
 
 let hero1 = new Superhero("Shadow Avenger", "Irakiza Didier", ["Invisibility", "Super Strength", "Flight"], "Kryptonite");
-let hero2 = new Superhero("Blaze", "Habimana Strong", ["Fire Control", "Heat Resistance"], "Water");
+let hero2 = new Superhero("Fire Bender", "Habimana Strong", ["Fire Control", "Heat Resistance"], "Water");
 
 console.log(hero1);
 console.log(hero2);
@@ -64,3 +64,36 @@ Superhero.prototype.revealIdentity = function () {
 
 hero1.usePower("Flight");
 hero2.revealIdentity();
+
+// 5. Object Iteration and Transformation
+// Task: Use forEach, map, or filter to manipulate an array of superheroes and supervillains
+
+let characters = [
+    new Superhero("Shadow Avenger", "Irakiza Didier", ["Invisibility", "Super Strength", "Flight"], "Kryptonite"),
+    new Superhero("Fire Bender", "Habimana Strong", ["Fire Control", "Heat Resistance"], "Water"),
+    {
+        name: "Dark Shadow",
+        type: "villain",
+        powers: ["Dark Magic"],
+        weakness: "Light"
+    },
+    {
+        name: "Frostbite",
+        type: "villain",
+        powers: ["Ice Control"],
+        weakness: "Fire"
+    }
+];
+
+// using forEach to log all character names
+characters.forEach(character => {
+    console.log(`${character.name} is a ${character.type || "hero"}`);
+});
+
+// using map to transform all hero names into uppercase
+let heroNamesUpperCase = characters.map(character => character.type !== "villain" ? character.name.toUpperCase() : character.name);
+console.log("Hero names in uppercase: ", heroNamesUpperCase);
+
+// using filter to get only the villains
+let villains = characters.filter(character => character.type === "villain");
+console.log("Villains: ", villains);
