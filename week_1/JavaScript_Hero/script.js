@@ -46,3 +46,21 @@ let hero2 = new Superhero("Blaze", "Habimana Strong", ["Fire Control", "Heat Res
 
 console.log(hero1);
 console.log(hero2);
+
+// 4. Prototypal Inheritance
+// Task: Extend the functionality of your superheroes using prototypal inheritance.
+
+Superhero.prototype.usePower = function (powerName) {
+    if (this.powers.includes(powerName)) {
+        console.log(`${this.name} uses ${powerName}!`);
+    } else {
+        console.log(`${this.name} doesn't have the power ${powerName}.`);
+    }
+};
+
+Superhero.prototype.revealIdentity = function () {
+    console.log(`The secret identity of ${this.name} is ${this.secretIdentity}.`);
+};
+
+hero1.usePower("Flight");
+hero2.revealIdentity();
