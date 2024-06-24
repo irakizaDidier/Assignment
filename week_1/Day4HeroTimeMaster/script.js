@@ -132,8 +132,14 @@ function setAlarm() {
         let alertElement = document.getElementById("alert");
         alertElement.style.display = 'block';
         alertElement.classList.add('blinking');
-        alert("Go to work Please!!");
+        // alert("Go to work Please!!");
+
+        setTimeout(function () {
+            alertElement.style.display = 'none';
+            alertElement.classList.remove('blinking');
+        }, 30000);
     });
+
 }
 
 document.getElementById("setAlarmButton").addEventListener("click", setAlarm);
