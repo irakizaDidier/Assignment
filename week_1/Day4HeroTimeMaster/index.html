@@ -2,9 +2,31 @@
 <html>
     <head>
         <title>Clock</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
         <div id="clock"></div>
+
+        <!-- Form to select time format and set alarm -->
+        <div class="controls">
+            <label for="timeFormat">Time Format:</label>
+            <select id="timeFormat">
+                <option value="24">24-hour</option>
+                <option value="12">12-hour (AM/PM)</option>
+            </select>
+
+            <div class="alarm-setting">
+                <label for="alarmHour">Hour:</label>
+                <input type="number" id="alarmHour" min="0" max="23">
+                <label for="alarmMinute">Minute:</label>
+                <input type="number" id="alarmMinute" min="0" max="59">
+                <label for="alarmSecond">Second:</label>
+                <input type="number" id="alarmSecond" min="0" max="59">
+                <button id="setAlarmButton">Set Alarm</button>
+            </div>
+        </div>
+
+        <div id="alert" class="alert">Alarm! Time to go!</div>
         <script src="script.js"></script>
     </body>
 </html>

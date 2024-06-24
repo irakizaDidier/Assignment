@@ -61,7 +61,12 @@ console.log("12-Hour Format Time: ", myClock.get12HourTime());
 function displayClock() {
     let clockElement = document.getElementById("clock");
     let clock = new Clock();
-    clockElement.innerHTML = clock.getFormattedTime();
+    let format = document.getElementById("timeFormat").value;
+    if (format === "12") {
+        clockElement.innerHTML = clock.get12HourTime();
+    } else {
+        clockElement.innerHTML = clock.getFormattedTime();
+    }
 }
 
 setInterval(displayClock, 1000);
@@ -117,6 +122,18 @@ Clock.prototype.setAlarm = function (hour, minute, second, callback) {
         setTimeout(callback, timeToAlarm);
     }
 };
-myClock.setAlarm(12, 48, 0, function () {
-    alert("Go to work Please!!");
-});
+
+function setAlarm() {
+    let hour = parseInt(document.getElementById("alarmHour").value);
+    let minute = parseInt(document.getElementById("alarmMinute").value);
+    let second = parseInt(document.getElementById("alarmSecond").value);
+
+    myClock.setAlarm(hour, minute, second, function () {
+        let alertElement = document.getElementById("alert");
+        alertElement.style.display = 'block';
+        alertElement.classList.add('blinking');
+        alert("Go to work Please!!");
+    });
+}
+
+document.getElementById("setAlarmButton").addEventListener("click", setAlarm);
