@@ -154,8 +154,8 @@ function compose(...fns) {
 
 // Example usage:
 
-const capitalizee = str => str.charAt(0).toUpperCase() + str.slice(1);
-const reversee = str => str.split('').reverse().join('');
+// const capitalizee = str => str.charAt(0).toUpperCase() + str.slice(1);
+// const reversee = str => str.split('').reverse().join('');
 
 const reverseAndCapitalize = compose(capitalize, reverse);
 console.log(reverseAndCapitalize("hello"));

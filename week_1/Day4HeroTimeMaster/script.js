@@ -103,7 +103,7 @@ setInterval(displayClock, 1000);
 //     displayClock({
 //         format: 12,
 //         timezoneOffset: -5,
-//         color: 'blue'
+//         color: 'red'
 //     });
 // }, 1000);
 
